@@ -13,6 +13,15 @@
     <ClCompile Include="GameOver.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h">
@@ -22,6 +31,12 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
@@ -55,6 +70,15 @@
     </None>
     <None Include="..\Build\Assets\PAPYRUS.TTF.asset">
       <Filter>Assets\Fonts</Filter>
+    </None>
+    <None Include="..\Build\Assets\Oswald.ttf.asset">
+      <Filter>Assets\Fonts</Filter>
+    </None>
+    <None Include="PauseMenu.h">
+      <Filter>Header Files\Game</Filter>
+    </None>
+    <None Include="PauseMenu.json">
+      <Filter>Scenes</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\Build\Assets\PAPYRUS.TTF">
+      <Filter>Assets\Fonts</Filter>
+    </Font>
+    <Font Include="..\Build\Assets\Oswald.ttf">
       <Filter>Assets\Fonts</Filter>
     </Font>
   </ItemGroup>

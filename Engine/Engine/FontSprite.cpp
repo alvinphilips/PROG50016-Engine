@@ -34,9 +34,14 @@ void FontSprite::Update() {
 	}
 
 	const Transform& transform = ownerEntity->GetTransform();
-
-	fontRect = { static_cast<int>(transform.position.x), static_cast<int>(transform.position.y),
-		( static_cast<int>(outputSizing.x * transform.scale.x)), (static_cast<int>(outputSizing.y * transform.scale.y)) };
+	const auto size = IVec2(transform.scale * outputSizing);
+	const IVec2 pos = transform.position - size / 2;
+	fontRect = {
+		pos.x,
+		pos.y,
+		size.x,
+		size.y
+	};
 
 	flip = static_cast<SDL_RendererFlip>((transform.scale.x < 0) | ((transform.scale.y < 0) << 1));
 }
@@ -51,22 +56,12 @@ void FontSprite::Render() {
 		return;
 	}
 
-	const Transform& transform = ownerEntity->GetTransform();
-    const auto size = IVec2(transform.scale * outputSizing);
-    const IVec2 pos = transform.position - size / 2;
-    fontRect = {
-        pos.x,
-        pos.y,
-        size.x,
-        size.y
-    };
-
 	SDL_RenderCopyEx(
 		&RenderSystem::Instance().GetRenderer(),
 		output,
 		nullptr,
 		&fontRect,
-		(double)transform.rotation,
+		(double)ownerEntity->GetTransform().rotation,
 		nullptr,
 		flip
 	);

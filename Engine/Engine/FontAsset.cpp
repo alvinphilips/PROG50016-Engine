@@ -42,4 +42,13 @@ void FontAsset::SetFontSize(int size) const
 		return;
 	}
 	TTF_SetFontSize(font, size);
-};
+}
+IVec2 FontAsset::GetTextSize(const std::string& text) const
+{
+	IVec2 out;
+
+	TTF_SizeText(font, text.c_str(), &out.x, &out.y);
+
+	return out;
+}
+;

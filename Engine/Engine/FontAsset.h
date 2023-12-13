@@ -19,6 +19,7 @@ class FontAsset final : public Asset
     void Load(json::JSON&) override;
     TTF_Font* GetFont() const;
     void SetFontSize(int size) const;
+    IVec2 GetTextSize(const std::string&) const;
 };
 
 #endif // !_FONT_ASSET_H_

@@ -252,3 +252,39 @@ IVec2 IVec2::Abs() const
 {
 	return { std::abs(this->x), std::abs(this->y) };
 }
+
+Color::Color()
+{
+	r = 255;
+	g = 255;
+	b = 255;
+	a = 255;
+}
+
+Color::Color(int _r, int _g, int _b)
+{
+	r = _r;
+	g = _g;
+	b = _b;
+	a = 255;
+}
+
+Color::Color(json::JSON& node)
+{
+	// Initialize to white
+	*this = Color();
+
+	if (node.hasKey("r")) {
+		r = node.at("r").ToInt();
+	}
+	if (node.hasKey("g")) {
+		g = node.at("g").ToInt();
+	}
+	if (node.hasKey("b")) {
+		b = node.at("b").ToInt();
+	}
+	if (node.hasKey("a")) {
+		a = node.at("a").ToInt();
+	}
+}
+

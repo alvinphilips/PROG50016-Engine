@@ -42,6 +42,10 @@ Asset* HandleAssetEntry(const std::filesystem::directory_entry& entry) {
 }
 
 void AssetManager::Initialize() {
+	if (!std::filesystem::exists(assetDirectory)) {
+		LOG("FATAL: Asset Directory '" << assetDirectory << "' does not exist.");
+		return;
+	}
 	if (recursiveSearch) {
 		for (const auto& entry : recursive_directory_iterator(assetDirectory)) {
 			AddAsset(HandleAssetEntry(entry));

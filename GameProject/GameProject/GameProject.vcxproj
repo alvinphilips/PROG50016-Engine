@@ -186,11 +186,16 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Game_Register.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
@@ -203,16 +208,20 @@
     <None Include="..\Build\Assets\girl.png.asset" />
     <None Include="..\Build\Assets\hitEffect03.wav.asset" />
     <None Include="..\Build\Assets\nottaco.png.asset" />
+    <None Include="..\Build\Assets\Oswald.ttf.asset" />
     <None Include="..\Build\Assets\PAPYRUS.TTF.asset" />
     <None Include="..\Build\Assets\RenderSettings.json" />
     <None Include="..\Build\Assets\SceneManager.json" />
     <None Include="..\Build\Assets\Scenes\Scene01.json" />
     <None Include="..\Build\Assets\Scenes\Scene02.json" />
+    <None Include="PauseMenu.h" />
+    <None Include="PauseMenu.json" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\Build\Assets\hitEffect03.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Font Include="..\Build\Assets\Oswald.ttf" />
     <Font Include="..\Build\Assets\PAPYRUS.TTF" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
