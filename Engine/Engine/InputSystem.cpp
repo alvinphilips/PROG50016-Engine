@@ -66,6 +66,7 @@ void InputSystem::Initialize()
 
 void InputSystem::Update()
 {
+	SDL_GetMouseState(&mouse_position.x, &mouse_position.y);
 
 	// Update the state of the input system every frame
 	   // Handle events
@@ -325,6 +326,11 @@ void InputSystem::registerGamepadButtonEventHandler(SDL_JoystickID joystickID, S
 {
 
 	gamepadButtonEventHandlers[joystickID][button] = handler;
+}
+
+IVec2 InputSystem::MousePosition() const
+{
+	return mouse_position;
 }
 
 /**

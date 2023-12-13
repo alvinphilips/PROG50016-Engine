@@ -7,30 +7,36 @@ IMPLEMENT_DYNAMIC_CLASS(Menu)
 
 void Menu::Initialize()
 {
+	// Get the parent scene
 	Scene* scene = ownerEntity->GetParentScene();
 	if (scene == nullptr) {
 		LOG("Could not get scene");
 		return;
 	}
 
-	FontAsset* font = (FontAsset*)AssetManager::Get().GetAsset("oswald-font");
+	FontAsset* font = (FontAsset*)AssetManager::Get().GetAsset(text_font);
 	if (font == nullptr) {
 		LOG("Could not get font");
 		return;
 	}
 
-	int item_offset = 0;
-	if (options.size() > 0) {
-		item_offset = item_padding + font->GetTextSize(options[0]).y;
+	// Early exit if we do not have any menu items
+	if (options.size() == 0) {
+		return;
 	}
 
+	// Figure out the offset for the menu options
+	int item_offset = item_padding + font->GetTextSize(options[0]).y;
+
+	// Create the items
 	for (const auto& option : options) {
 		Entity* optionEntity = scene->CreateEntity();
 		FontSprite* fs = (FontSprite*)optionEntity->CreateComponent("FontSprite");
 		fs->SetFont(font);
 		fs->SetText(option);
-		optionEntity->GetTransform().position.y = (float) item_offset;
-		optionEntity->GetTransform().position.x = (float) RenderSystem::Instance().GetWindowSize().x / 2.0f;
+		fs->SetFontColor(default_color.r, default_color.g, default_color.b, default_color.a);
+		optionEntity->GetTransform().position.y = (float)item_offset;
+		optionEntity->GetTransform().position.x = (float)RenderSystem::Instance().GetWindowSize().x / 2.0f;
 		item_offset += item_padding + font->GetTextSize(option).y;
 		optionEntities.push_back(fs);
 	}
@@ -42,7 +48,7 @@ void Menu::Initialize()
 		entity->GetOwner()->GetTransform().position.y += item_offset;
 	}
 
-	selected = optionEntities.size() > 0 ? 0 : -1;
+	selected = 0;
 	selection_timer = 0;
 }
 
@@ -56,33 +62,59 @@ void Menu::Update()
 
 	selection_timer -= Time::Instance().DeltaTime();
 
-	if (selection_timer > 0) {
-		return;
-	}
-
-	if (input.isKeyPressed(SDLK_RETURN)) {
+	if (clicked) {
 		selection_timer = selection_delay;
 		auto callback = callbacks.find(selected);
 		if (callback != callbacks.end()) {
 			callback->second();
 		}
-		clicked = true;
+		clicked = false;
+	}
+
+	if (selection_timer > 0) {
+		return;
 	}
 
 	const int old_selected = selected;
 
 	// Handle vertical movement
 	if (input.isKeyPressed(SDLK_UP) || input.isKeyPressed(SDLK_w) || input.isGamepadButtonPressed(0, SDL_CONTROLLER_BUTTON_DPAD_UP)) {
-		selected++;
-	}
-	if (input.isKeyPressed(SDLK_DOWN) || input.isKeyPressed(SDLK_s) || input.isGamepadButtonPressed(0, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) {
 		selected--;
 	}
+	if (input.isKeyPressed(SDLK_DOWN) || input.isKeyPressed(SDLK_s) || input.isGamepadButtonPressed(0, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) {
+		selected++;
+	}
 
-	selected %= optionEntities.size();
+	if (input.isKeyPressed(SDLK_RETURN)) {
+		clicked = true;
+	}
+
+	if (use_mouse_input) {
+		IVec2 mouse_pos = input.MousePosition();
+		for (int i = 0; i < optionEntities.size(); i++) {
+			const auto& text = optionEntities[i];
+			IVec2 size = text->GetTextSize();
+			Vec2 pos = text->GetOwner()->GetTransform().position;
+			Vec2 top_left = pos - size / 2;
+			// Silly little bounds check
+			if (mouse_pos.x > top_left.x && mouse_pos.x < top_left.x + size.x
+				&& mouse_pos.y > top_left.y && mouse_pos.y < top_left.y + size.y) {
+				selected = i;
+
+				if (input.isMouseButtonPressed(SDL_BUTTON_LEFT)) {
+					clicked = true;
+				}
+
+				break;
+			}
+		}
+	}
+
+	// Tiny hack to let us go from the first to last option
+	selected = (selected + optionEntities.size()) % optionEntities.size();
 
 	if (selected != old_selected) {
-		optionEntities.at(old_selected)->SetFontColor(255, 255, 255, 255);
+		optionEntities.at(old_selected)->SetFontColor(default_color.r, default_color.g, default_color.b, default_color.a);
 		optionEntities.at(old_selected)->GetOwner()->GetTransform().scale = Vec2(1.0f);
 		selection_timer = selection_delay;
 	}
@@ -96,10 +128,19 @@ void Menu::Destroy()
 
 void Menu::Load(json::JSON& node)
 {
+	Component::Load(node);
 	if (node.hasKey("Options")) {
 		for (const auto& option : node.at("Options").ArrayRange()) {
 			options.push_back(option.ToString());
 		}
+	}
+
+	if (node.hasKey("TextFont")) {
+		text_font = node.at("TextFont").ToString();
+	}
+
+	if (node.hasKey("DefaultColor")) {
+		default_color = Color(node.at("DefaultColor"));
 	}
 
 	if (node.hasKey("SelectionColor")) {

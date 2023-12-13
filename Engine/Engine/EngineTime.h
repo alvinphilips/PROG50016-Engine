@@ -28,9 +28,11 @@ public:
 
 	void Update();
 
-	float DeltaTime() { return deltaTime.count(); }
+	float DeltaTime() { return time_scale * deltaTime.count(); }
+	float DeltaTimeUnscaled() { return deltaTime.count(); }
 	float TotalTime() { return totalTime.count(); }
 	unsigned int FrameCount() { return frameCount; }
+	float time_scale = 1.0;
 
 private:
 	void Initialize();

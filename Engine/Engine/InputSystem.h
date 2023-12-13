@@ -55,6 +55,8 @@ public:
 		SDL_GameControllerButton button,
 		std::function<void(bool)> handler);
 
+	IVec2 MousePosition() const;
+
 
 
 
@@ -65,7 +67,7 @@ private:
 	int gamepadId;
 	InputSystem(const InputSystem&) = delete;
 
-
+	IVec2 mouse_position;
 
 	InputSystem operator = (const InputSystem&) = delete;
 	static InputSystem* instance;

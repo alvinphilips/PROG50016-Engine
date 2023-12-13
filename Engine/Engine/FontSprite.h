@@ -33,6 +33,8 @@ private:
 
 	SDL_Color fontColor = { 255,255,255,255 };
 
+	IVec2 text_size;
+
 	/*
 	* @RegenerateOutput
 	*
@@ -86,6 +88,8 @@ public:
 	* Takes RGB values along with an Alpha and regenerates the font texture.
 	*/
 	void SetFontColor(int r, int g, int b, int a);
+
+	IVec2 GetTextSize() const;
 };
 
 #endif

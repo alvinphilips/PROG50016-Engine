@@ -25,11 +25,14 @@ public:
     bool SetCallback(int, std::function<void()>);
 
 protected:
+    bool use_mouse_input = true;
     bool clicked = false;
     int selected = -1;
     int item_padding = 2;
+    std::string text_font = "oswald-font";
     float selection_delay = 0.2f;
     float selection_timer;
+    Color default_color = { 255, 255, 255 };
     Color selection_color;
     std::vector<std::string> options;
     std::vector<FontSprite*> optionEntities;

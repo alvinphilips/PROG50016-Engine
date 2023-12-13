@@ -2,13 +2,10 @@
   "AssetManager": {
     "Assets": [
       {
-        "GUID": "awooga"
-      },
-      {
-        "GUID": "girl"
-      },
-      {
         "GUID": "oswald-font"
+      },
+      {
+        "GUID": "cheems"
       }
     ]
   },
@@ -17,39 +14,6 @@
     "GUID": "1a9e5171-c7ab-47d4-9af4-d490d1494201",
     "IsEnabled": true,
     "Entities": [
-      {
-        "Name": "Player",
-        "GUID": "uwu",
-        "Transform": {
-          "Position": [100.0, 200.0],
-          "Rotation": 0.0,
-          "Scale": [0.5, 0.5]
-        },
-        "Components": [
-          {
-            "ClassName": "AnimatedSprite",
-            "ClassData": {
-              "Texture": "girl",
-              "SpriteSheet": {
-                "Rows": 1,
-                "Columns": 20,
-                "Frames": 20
-              }
-            }
-          },
-          {
-            "ClassName": "BoxCollider",
-            "ClassData": {}
-          },
-          {
-            "ClassName": "Player",
-            "ClassData": {
-              "Speed": 400.0,
-              "DeathScene": "45f479c9-f110-43c5-be35-9fbbc5d7d694"
-            }
-          }
-        ]
-      },
       {
         "Name": "MainMenu",
         "GUID": "uwu2",
@@ -60,18 +24,10 @@
         },
         "Components": [
           {
-            "ClassName": "Menu",
-            "ClassData": {
-            }
-          },
-          {
             "ClassName": "MainMenu",
             "ClassData": {
               "StartScene": "45f479c9-f110-43c5-be35-9fbbc5d7d694",
-              "Options": [
-                "Play",
-                "Load"
-              ],
+              "Options": ["Play", "Load"],
               "SelectionColor": {
                 "r": 124,
                 "g": 113,
