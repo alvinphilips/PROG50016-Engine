@@ -111,6 +111,25 @@ union IVec2
     IVec2 Abs() const;
 };
 
+union Color {
+    struct {
+        int x;
+        int y;
+        int z;
+        int w;
+    };
+    struct {
+        int r;
+        int g;
+        int b;
+        int a;
+    };
+
+    Color();
+    Color(int _r, int _g, int _b);
+    Color(json::JSON&);
+};
+
 inline Vec2 vec2_from_json(json::JSON& node) {
     if (node.length() == 2) {
         return Vec2((float)node[0].ToFloat(), (float)node[1].ToFloat());
