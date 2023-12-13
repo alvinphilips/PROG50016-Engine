@@ -16,24 +16,38 @@
     "Entities": [
       {
         "Name": "MainMenu",
-        "GUID": "uwu2",
-        "Transform": {
-          "Position": [500.0, 250.0],
-          "Rotation": 0.0,
-          "Scale": [0.4, 0.4]
-        },
+        "GUID": "main-menu",
         "Components": [
           {
             "ClassName": "MainMenu",
             "ClassData": {
               "StartScene": "45f479c9-f110-43c5-be35-9fbbc5d7d694",
-              "Options": ["Play", "Load"],
+              "Options": [ "Play", "Load" ],
               "SelectionColor": {
                 "r": 124,
                 "g": 113,
                 "b": 243
               }
             }
+          }
+        ]
+      },
+      {
+        "Name": "Cursor",
+        "GUID": "cursor",
+        "Transform": {
+          "Rotation": 0.0,
+          "Scale": [ 0.2, 0.2 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "cheems"
+            }
+          },
+          {
+            "ClassName": "Cursor"
           }
         ]
       }
