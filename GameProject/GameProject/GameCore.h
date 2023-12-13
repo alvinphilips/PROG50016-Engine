@@ -15,6 +15,8 @@
 #include "Menu.h"
 #include "MainMenu.h"
 #include "PauseMenu.h"
+#include "MouseCursor.h"
+#include "Spawner.h"
 #include "GameOver.h"
 #include "AudioSystem.h"
 #include "AssetManager.h"

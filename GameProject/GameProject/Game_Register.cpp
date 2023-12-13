@@ -7,4 +7,6 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(Menu);
 	REGISTER_TYPECLASS(MainMenu);
 	REGISTER_TYPECLASS(PauseMenu);
+	REGISTER_TYPECLASS(Cursor);
+	REGISTER_TYPECLASS(Spawner);
 }
