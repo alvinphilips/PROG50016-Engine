@@ -36,7 +36,6 @@
         "Name": "Cursor",
         "GUID": "cursor",
         "Transform": {
-          "Rotation": 0.0,
           "Scale": [ 0.2, 0.2 ]
         },
         "Components": [
