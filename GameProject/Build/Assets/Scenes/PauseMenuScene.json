@@ -1,0 +1,42 @@
+{
+  "AssetManager": {
+    "Assets": [
+      {
+        "GUID": "oswald-font"
+      }
+    ]
+  },
+  "Scene": {
+    "Name": "PauseMenu",
+    "GUID": "pause-menu",
+    "IsEnabled": false,
+    "Entities": [
+      {
+        "Name": "MainMenu",
+        "Transform": {
+          "Position": [ 500.0, 250.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.4, 0.4 ]
+        },
+        "Components": [
+          {
+            "ClassName": "PauseMenu",
+            "ClassData": {
+              "MainScene": "1a9e5171-c7ab-47d4-9af4-d490d1494201",
+              "Options": [
+                "Continue",
+                "Save",
+                "Quit"
+              ],
+              "SelectionColor": {
+                "r": 124,
+                "g": 113,
+                "b": 243
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

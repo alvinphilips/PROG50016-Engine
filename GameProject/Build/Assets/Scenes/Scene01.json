@@ -6,6 +6,9 @@
       },
       {
         "GUID": "girl"
+      },
+      {
+        "GUID": "oswald-font"
       }
     ]
   },
@@ -48,23 +51,33 @@
         ]
       },
       {
-        "Name": "Enemy",
+        "Name": "MainMenu",
         "GUID": "uwu2",
         "Transform": {
-          "Position": [1000.0, 250.0],
+          "Position": [500.0, 250.0],
           "Rotation": 0.0,
           "Scale": [0.4, 0.4]
         },
         "Components": [
           {
-            "ClassName": "Sprite",
+            "ClassName": "Menu",
             "ClassData": {
-              "Texture": "awooga"
             }
           },
           {
-            "ClassName": "CircleCollider",
-            "ClassData": {}
+            "ClassName": "MainMenu",
+            "ClassData": {
+              "StartScene": "45f479c9-f110-43c5-be35-9fbbc5d7d694",
+              "Options": [
+                "Play",
+                "Load"
+              ],
+              "SelectionColor": {
+                "r": 124,
+                "g": 113,
+                "b": 243
+              }
+            }
           }
         ]
       }
