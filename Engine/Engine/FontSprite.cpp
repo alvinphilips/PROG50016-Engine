@@ -135,6 +135,11 @@ void FontSprite::SetFontColor(int r, int g, int b, int a) {
 	RegenerateOutput();
 }
 
+IVec2 FontSprite::GetTextSize() const
+{
+	return text_size;
+}
+
 /*
 * @RegenerateOutput
 *
@@ -150,4 +155,6 @@ void FontSprite::RegenerateOutput() {
 	SDL_DestroyTexture(output);
 	output = SDL_CreateTextureFromSurface(&RenderSystem::Instance().GetRenderer(), textSurface);
 	SDL_FreeSurface(textSurface);
+
+	text_size = { textSurface->w, textSurface->h };
 }
