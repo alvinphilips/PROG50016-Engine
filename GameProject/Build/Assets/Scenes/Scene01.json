@@ -2,12 +2,6 @@
   "AssetManager": {
     "Assets": [
       {
-        "GUID": "awooga"
-      },
-      {
-        "GUID": "girl"
-      },
-      {
         "GUID": "oswald-font"
       },
       {
@@ -30,10 +24,6 @@
         },
         "Components": [
           {
-            "ClassName": "Menu",
-            "ClassData": {}
-          },
-          {
             "ClassName": "MainMenu",
             "ClassData": {
               "StartScene": "45f479c9-f110-43c5-be35-9fbbc5d7d694",
@@ -44,25 +34,6 @@
                 "b": 243
               }
             }
-          }
-        ]
-      },
-      {
-        "Name": "Cursor",
-        "GUID": "cursor",
-        "Transform": {
-          "Scale": [0.2, 0.2]
-        },
-        "Components": [
-          {
-            "ClassName": "Sprite",
-            "ClassData": {
-              "Texture": "cheems"
-            }
-          },
-          {
-            "ClassName": "Cursor",
-            "ClassData": {}
           }
         ]
       }
