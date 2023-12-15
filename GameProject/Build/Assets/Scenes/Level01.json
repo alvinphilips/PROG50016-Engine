@@ -5,7 +5,7 @@
         "GUID": "girl"
       },
       {
-        "GUID": "meow"
+        "GUID": "awooga"
       },
       {
         "GUID": "https-youtu-be-jVhlJNJopOQ"
@@ -20,7 +20,7 @@
       {
         "Name": "Player",
         "Transform": {
-          "Position": [ 200.0, 200.0 ],
+          "Position": [ 200.0, 24.0 ],
           "Scale": [ 0.5, 0.5 ]
         },
         "Components": [
@@ -47,7 +47,7 @@
         ]
       },
       {
-        "Name": "Player",
+        "Name": "HUD",
         "Transform": {
           "Position": [ 200.0, 200.0 ],
           "Scale": [ 0.5, 0.5 ]
@@ -55,6 +55,32 @@
         "Components": [
           {
             "ClassName": "HUD"
+          }
+        ]
+      },
+      {
+        "Name": "EnemySpawner",
+        "Transform": {
+          "Position": [ 200.0, 200.0 ],
+          "Scale": [ 0.05, 0.05 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "cheems"
+            }
+          },
+          {
+            "ClassName": "Spawner",
+            "ClassData": {
+              "SpawnClass": "BombEnemy",
+              "SpawnDelay": 2.0,
+              "InstanceData": {
+                "Texture": "cheems",
+                "Speed": 200.0
+              }
+            }
           }
         ]
       }

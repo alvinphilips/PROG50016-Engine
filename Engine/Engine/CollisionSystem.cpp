@@ -156,22 +156,22 @@ std::set<std::pair<ICollider*, ICollider*>> CollisionSystem::NarrowPhaseDetectio
 		// Circle vs Circle Collision Check
 		if (collider1->GetType() == ColliderType::Circle && collider2->GetType() == ColliderType::Circle) 
 		{
-			isCollision = CircleCircleCollision(static_cast<CircleCollider*>(collider1), static_cast<CircleCollider*>(collider2));
+			isCollision = CircleCircleCollision((CircleCollider*)collider1, (CircleCollider*)collider2);
 		}
 		// Box vs Box Collision Check (to be implemented)
 		else if (collider1->GetType() == ColliderType::Box && collider2->GetType() == ColliderType::Box)
 		{
-			isCollision = BoxBoxCollision(static_cast<BoxCollider*>(collider1), static_cast<BoxCollider*>(collider2));
+			isCollision = BoxBoxCollision((BoxCollider*)collider1, (BoxCollider*)collider2);
 		}
 		// Circle vs Box Collision Check (to be implemented)
 		else if (collider1->GetType() == ColliderType::Circle && collider2->GetType() == ColliderType::Box) 
 		{
-			isCollision = CircleBoxCollision(collider1, static_cast<BoxCollider*>(collider2));
+			isCollision = CircleBoxCollision(collider1, (BoxCollider*)collider2);
 		}
 		// Box vs Circle Collision Check (to be implemented)
 		else if (collider1->GetType() == ColliderType::Box && collider2->GetType() == ColliderType::Circle) 
 		{
-			isCollision = CircleBoxCollision(collider2, static_cast<BoxCollider*>(collider1));
+			isCollision = CircleBoxCollision(collider2, (BoxCollider*)collider1);
 		}
 
 		// Handle collision
@@ -183,22 +183,10 @@ std::set<std::pair<ICollider*, ICollider*>> CollisionSystem::NarrowPhaseDetectio
 	return currentFrameCollisions;
 }
 
-
-
-
-
-
-// Helper function for calculating distance between two points
-float DistanceSquared(const Vec2& a, const Vec2& b) {
-	float dx = a.x - b.x;
-	float dy = a.y - b.y;
-	return dx * dx + dy * dy;
-}
-
 // Helper function for Circle-Circle collision
 bool CollisionSystem::CircleCircleCollision(ICollider* col1, ICollider* col2) {
-	CircleCollider* circle1 = static_cast<CircleCollider*>(col1);
-	CircleCollider* circle2 = static_cast<CircleCollider*>(col2);
+	CircleCollider* circle1 = (CircleCollider*)col1;
+	CircleCollider* circle2 = (CircleCollider*)col2;
 	Vec2 positionDiff = circle1->GetPosition() - circle2->GetPosition();
 	float radiusSum = circle1->GetRadius() + circle2->GetRadius();
 	return positionDiff.MagnitudeSquared() <= (radiusSum * radiusSum);
@@ -206,10 +194,14 @@ bool CollisionSystem::CircleCircleCollision(ICollider* col1, ICollider* col2) {
 
 // Helper function for Box-Box collision using AABB (Axis-Aligned Bounding Box)
 bool CollisionSystem::BoxBoxCollision(ICollider* col1, ICollider* col2) {
-	BoxCollider* box1 = static_cast<BoxCollider*>(col1);
-	BoxCollider* box2 = static_cast<BoxCollider*>(col2);
+	BoxCollider* box1 = (BoxCollider*)col1;
+	BoxCollider* box2 = (BoxCollider*)col2;
 	auto bounds1 = box1->GetBounds();
 	auto bounds2 = box2->GetBounds();
+	bounds1.w *= box1->ownerEntity->GetTransform().scale.x;
+	bounds1.h *= box1->ownerEntity->GetTransform().scale.y;
+	bounds2.w *= box2->ownerEntity->GetTransform().scale.x;
+	bounds2.h *= box2->ownerEntity->GetTransform().scale.y;
 
 	// Calculate the half-widths and half-heights
 	float halfWidth1 = bounds1.w / 2.0f;
@@ -228,8 +220,8 @@ bool CollisionSystem::BoxBoxCollision(ICollider* col1, ICollider* col2) {
 
 // Helper function for Circle-Box collision using AABB (Axis-Aligned Bounding Box)
 bool CollisionSystem::CircleBoxCollision(ICollider* col1, ICollider* col2) {
-	BoxCollider* box = static_cast<BoxCollider*>(col1);
-	CircleCollider* circle = static_cast<CircleCollider*>(col2);
+	BoxCollider* box = (BoxCollider*)(col2);
+	CircleCollider* circle = (CircleCollider*)(col1);
 	auto bounds = box->GetBounds();
 	Vec2 circleCenter = circle->GetPosition();
 	float circleRadius = circle->GetRadius();

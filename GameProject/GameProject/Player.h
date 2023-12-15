@@ -10,6 +10,7 @@ class Player : public Component
 
 public:
     void Initialize() override;
+    void OnEnable() override;
     void Update() override;
     void Load(json::JSON&) override;
 private:

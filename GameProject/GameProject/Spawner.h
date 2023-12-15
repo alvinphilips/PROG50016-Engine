@@ -30,6 +30,7 @@ private:
     std::string spawn_class;
     bool drop_item_when_destroyed = false;
     std::string dropped_item_class;
+    json::JSON instance_data;
 };
 
 #endif // SPAWNER_H

@@ -12,6 +12,10 @@ void Player::Initialize()
     collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
 }
 
+void Player::OnEnable() {
+    LOG("uwu");
+}
+
 void Player::Update() {
     shoot_timer -= Time::Instance().DeltaTime();
     pause_timer -= Time::Instance().DeltaTimeUnscaled();
