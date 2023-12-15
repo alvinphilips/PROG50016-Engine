@@ -11,7 +11,11 @@ void Player::Initialize()
     start_pos = ownerEntity->GetTransform().position;
     collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
 }
+
 void Player::Update() {
+    shoot_timer -= Time::Instance().DeltaTime();
+    pause_timer -= Time::Instance().DeltaTimeUnscaled();
+
     Vec2 dir = Vec2::Zero;
     const InputSystem& input = InputSystem::Instance();
 
@@ -48,6 +52,17 @@ void Player::Update() {
     // Move the player
     ownerEntity->GetTransform().position += dir * (speed * Time::Instance().DeltaTime());
 
+    if (input.isMouseButtonPressed(SDL_BUTTON_LEFT) && shoot_timer < 0) {
+        Scene* scene = ownerEntity->GetParentScene();
+        shoot_timer = shoot_delay;
+    }
+
+    if (input.isKeyPressed(SDLK_BACKQUOTE) && pause_timer < 0) {
+        Scene* pause_scene = SceneManager::Get().FindScene("pause-menu");
+        pause_scene->SetEnabled(!pause_scene->IsEnabled());
+        pause_timer = pause_delay;
+    }
+
     if (collider == nullptr)
     {
         LOG("no collider uwu");
@@ -63,7 +78,7 @@ void Player::Update() {
     	Scene* current_scene = SceneManager::Get().GetActiveScene();
     	if (SceneManager::Get().SetActiveScene(game_over_scene))
     	{
-    		current_scene->isEnabled = false;
+    		current_scene->SetEnabled(false);
     	}
 
         ownerEntity->GetTransform().position = start_pos;

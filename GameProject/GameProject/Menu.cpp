@@ -7,6 +7,8 @@ IMPLEMENT_DYNAMIC_CLASS(Menu)
 
 void Menu::Initialize()
 {
+	Component::Initialize();
+
 	// Get the parent scene
 	Scene* scene = ownerEntity->GetParentScene();
 	if (scene == nullptr) {
@@ -60,7 +62,7 @@ void Menu::Update()
 
 	const InputSystem& input = InputSystem::Instance();
 
-	selection_timer -= Time::Instance().DeltaTime();
+	selection_timer -= Time::Instance().DeltaTimeUnscaled();
 
 	if (clicked) {
 		selection_timer = selection_delay;

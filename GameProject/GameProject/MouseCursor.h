@@ -12,6 +12,8 @@ public:
     void Initialize() override;
     void Update() override;
     void Destroy() override;
+    void OnEnable() override;
+    void OnDisable() override;
 private:
 };
 

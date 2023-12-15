@@ -22,7 +22,7 @@ void GameOver::Update() {
     	Scene* current_scene = SceneManager::Get().GetActiveScene();
     	if (SceneManager::Get().SetActiveScene(scene_to_load))
     	{
-    		current_scene->isEnabled = false;
+    		current_scene->SetEnabled(false);
     	}
         is_playing_audio = false;
         sound_timer = sound_delay;
