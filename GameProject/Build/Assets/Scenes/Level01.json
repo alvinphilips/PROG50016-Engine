@@ -10,10 +10,28 @@
     ]
   },
   "Scene": {
-    "Name": "Level02",
+    "Name": "Level01",
     "GUID": "45f479c9-f110-43c5-be35-9fbbc5d7d694",
     "IsEnabled": false,
     "Entities": [
+      {
+        "Name": "Player",
+        "Transform": {
+          "Position": [ 200.0, 200.0 ],
+          "Scale": [ 0.5, 0.5 ]
+        },
+        "Components": [
+          {
+            "ClassName": "BoxCollider"
+          },
+          {
+            "ClassName": "Player",
+            "ClassData": {
+
+            }
+          }
+        ]
+      },
       {
         "Name": "GameOver",
         "GUID": "uwu",

@@ -65,10 +65,10 @@
     <None Include="..\Build\Assets\SceneManager.json">
       <Filter>Configuration Files</Filter>
     </None>
-    <None Include="..\Build\Assets\Scenes\Scene01.json">
+    <None Include="..\Build\Assets\Scenes\MainMenu.json">
       <Filter>Scenes</Filter>
     </None>
-    <None Include="..\Build\Assets\Scenes\Scene02.json">
+    <None Include="..\Build\Assets\Scenes\Level01.json">
       <Filter>Scenes</Filter>
     </None>
     <None Include="..\Build\Assets\hitEffect03.wav.asset">
@@ -89,7 +89,7 @@
     <None Include="PauseMenu.h">
       <Filter>Header Files\Game</Filter>
     </None>
-    <None Include="PauseMenu.json">
+    <None Include="..\Build\Assets\Scenes\PauseMenu.json">
       <Filter>Scenes</Filter>
     </None>
   </ItemGroup>

@@ -1,0 +1,52 @@
+{
+  "AssetManager": {
+    "Assets": [
+      {
+        "GUID": "oswald-font"
+      },
+      {
+        "GUID": "cheems"
+      }
+    ]
+  },
+  "Scene": {
+    "Name": "Level01",
+    "GUID": "1a9e5171-c7ab-47d4-9af4-d490d1494201",
+    "IsEnabled": true,
+    "Entities": [
+      {
+        "Name": "MainMenu",
+        "GUID": "main-menu",
+        "Components": [
+          {
+            "ClassName": "MainMenu",
+            "ClassData": {
+              "StartScene": "45f479c9-f110-43c5-be35-9fbbc5d7d694",
+              "Options": [ "Play", "Load" ],
+              "SelectionColor": {
+                "r": 124,
+                "g": 113,
+                "b": 243
+              }
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Cursor",
+        "GUID": "cursor",
+        "Transform": {
+          "Scale": [ 0.2, 0.2 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "cheems"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

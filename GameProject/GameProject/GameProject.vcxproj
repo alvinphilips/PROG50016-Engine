@@ -216,10 +216,10 @@
     <None Include="..\Build\Assets\PAPYRUS.TTF.asset" />
     <None Include="..\Build\Assets\RenderSettings.json" />
     <None Include="..\Build\Assets\SceneManager.json" />
-    <None Include="..\Build\Assets\Scenes\Scene01.json" />
-    <None Include="..\Build\Assets\Scenes\Scene02.json" />
+    <None Include="..\Build\Assets\Scenes\MainMenu.json" />
+    <None Include="..\Build\Assets\Scenes\PauseMenu.json" />
+    <None Include="..\Build\Assets\Scenes\Level01.json" />
     <None Include="PauseMenu.h" />
-    <None Include="PauseMenu.json" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\Build\Assets\hitEffect03.wav" />
