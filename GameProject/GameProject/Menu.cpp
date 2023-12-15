@@ -113,7 +113,7 @@ void Menu::Update()
 	}
 
 	// Tiny hack to let us go from the first to last option
-	selected = (selected + optionEntities.size()) % optionEntities.size();
+	selected = int(selected + optionEntities.size()) % (int) optionEntities.size();
 
 	if (selected != old_selected) {
 		optionEntities.at(old_selected)->SetFontColor(default_color.r, default_color.g, default_color.b, default_color.a);

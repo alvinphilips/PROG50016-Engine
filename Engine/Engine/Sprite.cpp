@@ -57,6 +57,11 @@ void Sprite::SetTextureAsset(TextureAsset* texAsset) {
     }
 }
 
+Vec2 Sprite::GetSize() const
+{
+    return Vec2(size);
+}
+
 void Sprite::Render()
 {
     if (texture == nullptr)

@@ -75,6 +75,7 @@ public:
 	 */
 	void SetTextureAsset(TextureAsset* texAsset);
 
+	Vec2 GetSize() const;
 
 	/**
 	 * @brief Loads the Component and TextureAsset information from JSON
