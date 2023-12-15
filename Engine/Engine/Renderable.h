@@ -19,7 +19,8 @@ class Renderable : public Component
 	friend class RenderSystem;
 
 	DECLARE_ABSTRACT_DERIVED_CLASS(Renderable, Component);
-
+public:
+	void SetFilterColor(int r, int g, int b, int a);
 private:
 
 /*
@@ -29,7 +30,6 @@ private:
 * Takes RGB Values along with an Alpha. Nothing clamps the values so numbers bigger then 255
 * or less than 0 will loop in their respective directions.
 */
-	void SetFilterColor(int r, int g, int b, int a);
 
 	virtual void Render() = 0;
 
