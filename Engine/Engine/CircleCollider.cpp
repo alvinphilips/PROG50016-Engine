@@ -37,7 +37,8 @@ void CircleCollider::SetRadius(float radius)
 float CircleCollider::GetRadius()
 {
 	if (m_radius == 0) {
-		m_radius = (Vec2((float)m_rect->w * 0.5f, (float)m_rect->h * 0.5f) * ownerEntity->GetTransform().scale).Magnitude();
+		Vec2 size = Vec2((float)m_rect->w * 0.5f, (float)m_rect->h * 0.5f) * ownerEntity->GetTransform().scale;
+		m_radius = std::fmax(size.x, size.y);
 	}
 	return m_radius;
 }

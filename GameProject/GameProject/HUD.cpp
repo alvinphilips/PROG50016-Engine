@@ -11,7 +11,7 @@ FontSprite* HUD::CreateTextField(FontAsset* font) {
 	return text;
 }
 
-Vec2 HUD::SetPlayerLives(int lives, Vec2 offset) {
+Vec2 HUD::SetPlayerLives(Vec2 offset) {
 	if (sprite_lives.size() == 0) {
 		return offset;
 	}
@@ -58,9 +58,6 @@ void HUD::Initialize()
 	text_kill_count = CreateTextField(font);
 	text_game_countdown = CreateTextField(font);
 	text_high_score = CreateTextField(font);
-
-	SetHighScore(0);
-	SetKillCount(0);
 }
 
 void HUD::Update()
@@ -68,8 +65,8 @@ void HUD::Update()
 	game_countdown -= Time::Instance().DeltaTime();
 
 	Vec2 offset = ui_offset;
-	offset = SetTextField(text_kill_count, kill_count, offset);
-	offset = SetPlayerLives(2, offset);
+	offset = SetTextField(text_kill_count, "Kill Count: " + std::to_string(kill_count), offset);
+	offset = SetPlayerLives(offset);
 
 	// TODO: Switch to using a better/faster method :P
 	int min = (int)game_countdown / 60;
@@ -78,7 +75,7 @@ void HUD::Update()
 	std::string counter = "Time Left: " + std::to_string(min) + ":" + std::to_string(sec) + "." + std::to_string(int(ms * 100));
 
 	offset = SetTextField(text_game_countdown, counter, offset);
-	offset = SetTextField(text_high_score, high_score, offset);
+	offset = SetTextField(text_high_score, "High Score: " + std::to_string(high_score), offset);
 }
 
 void HUD::Load(json::JSON& node)
@@ -91,16 +88,7 @@ void HUD::Load(json::JSON& node)
 	}
 }
 
-void HUD::SetKillCount(int _kill_count)
-{
-	kill_count = "Kill Count: " + std::to_string(_kill_count);
-}
-
-void HUD::SetHighScore(int _high_score) {
-	high_score = "High Score: " + std::to_string(_high_score);
-}
-
 void HUD::ResetGameCountdown(float _game_countdown)
 {
-	game_countdown = _game_countdown;
+	game_countdown = _game_countdown; 
 }

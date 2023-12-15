@@ -26,24 +26,27 @@ void Enemy::Update()
 {
     if (collider == nullptr)
     {
-        LOG("no collider uwu");
+        LOG("no enemy collider uwu");
         return;
     }
 
-    LOG(collider->GetRadius());
+    bool collided = false;
 
     for (const auto& other : collider->OnCollisionEnter())
     {
         if (other->GetOwner() != player->GetOwner())
         {
             ownerEntity->GetTransform().position = previous_position;
-            LOG("AHHHHH");
+            collided = true;
             continue;
         }
         ownerEntity->GetParentScene()->RemoveEntity(ownerEntity->GetUid());
+
     }
 
-    previous_position = ownerEntity->GetTransform().position;
+    if (!collided) {
+        previous_position = ownerEntity->GetTransform().position;
+    }
 }
 
 void Enemy::Load(json::JSON& node)
@@ -57,8 +60,18 @@ void Enemy::Load(json::JSON& node)
     }
 }
 
-void Enemy::Destroy()
+void Enemy::Destroy() {
+    auto search_hud_entity = ownerEntity->GetParentScene()->FindEntityByName("HUD");
+    if (search_hud_entity.size() > 0) {
+        HUD* hud = ((HUD*)search_hud_entity.front()->GetComponent("HUD"));
+        hud->kill_count++; 
+        hud->high_score = std::max(hud->kill_count, hud->high_score);
+    }
+    player->TakeDamage();
+    Component::Destroy();
+}
+
+void Enemy::OnDisable()
 {
-    //HUD* hud = ((HUD*)ownerEntity->GetParentScene()->FindEntityWithComponent("HUD").front());
-    //hud->SetKillCount();
+    // ownerEntity->GetParentScene()->RemoveEntity(ownerEntity->GetUid());
 }

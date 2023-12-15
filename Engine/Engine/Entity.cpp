@@ -68,6 +68,7 @@ void Entity::PostUpdate()
 	for (auto component : componentsToRemove)
 	{
 		components.remove(component);
+		component->Destroy();
 		delete component;
 	}
 	componentsToRemove.clear();
@@ -77,6 +78,7 @@ void Entity::Destroy()
 {
 	for (const auto component : components)
 	{
+		component->Destroy();
 		delete component;
 	}
 	components.clear();
@@ -86,7 +88,7 @@ void Entity::OnEnable()
 {
 	for (const auto component: components) {
 		if (!component->IsActive()) {
-			return;
+			continue;
 		}
 		component->OnEnable();
 	}

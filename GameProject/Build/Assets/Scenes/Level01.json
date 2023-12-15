@@ -1,15 +1,18 @@
 {
   "AssetManager": {
     "Assets": [
-      {
-        "GUID": "girl"
-      },
-      {
-        "GUID": "awooga"
-      },
-      {
-        "GUID": "https-youtu-be-jVhlJNJopOQ"
-      }
+        {
+            "GUID": "girl"
+        },
+        {
+            "GUID": "awooga"
+        },
+        {
+            "GUID": "https-youtu-be-jVhlJNJopOQ"
+        },
+        {
+            "GUID": "ui-font"
+        }
     ]
   },
   "Scene": {
@@ -17,73 +20,77 @@
     "GUID": "45f479c9-f110-43c5-be35-9fbbc5d7d694",
     "IsEnabled": false,
     "Entities": [
-      {
-        "Name": "Player",
-        "Transform": {
-          "Position": [ 200.0, 24.0 ],
-          "Scale": [ 0.5, 0.5 ]
+        {
+            "Name": "HUD",
+            "Transform": {
+                "Position": [ 200.0, 200.0 ],
+                "Scale": [ 0.5, 0.5 ]
+            },
+            "Components": [
+                {
+                    "ClassName": "HUD",
+                    "ClassData": {
+                        "TextFont": "ui-font"
+                    }
+                }
+            ]
         },
-        "Components": [
-          {
-            "ClassName": "AnimatedSprite",
-            "ClassData": {
-              "Texture": "girl",
-              "SpriteSheet": {
-                "Rows": 1,
-                "Columns": 20,
-                "Frames": 20
-              }
-            }
-          },
-          {
-            "ClassName": "BoxCollider"
-          },
-          {
-            "ClassName": "Player",
-            "ClassData": {
-              "Speed": 400.0
-            }
-          }
-        ]
-      },
-      {
-        "Name": "HUD",
-        "Transform": {
-          "Position": [ 200.0, 200.0 ],
-          "Scale": [ 0.5, 0.5 ]
+        {
+            "Name": "Player",
+            "Transform": {
+                "Position": [ 200.0, 24.0 ],
+                "Scale": [ 0.5, 0.5 ]
+            },
+            "Components": [
+                {
+                    "ClassName": "AnimatedSprite",
+                    "ClassData": {
+                        "Texture": "girl",
+                        "SpriteSheet": {
+                            "Rows": 1,
+                            "Columns": 20,
+                            "Frames": 20
+                        }
+                    }
+                },
+                {
+                    "ClassName": "BoxCollider"
+                },
+                {
+                    "ClassName": "Player",
+                    "ClassData": {
+                        "Speed": 400.0,
+                        "MainScene": "1a9e5171-c7ab-47d4-9af4-d490d1494201"
+                    }
+                }
+            ]
         },
-        "Components": [
-          {
-            "ClassName": "HUD"
-          }
-        ]
-      },
-      {
-        "Name": "EnemySpawner",
-        "Transform": {
-          "Position": [ 200.0, 200.0 ],
-          "Scale": [ 0.05, 0.05 ]
-        },
-        "Components": [
-          {
-            "ClassName": "Sprite",
-            "ClassData": {
-              "Texture": "cheems"
-            }
-          },
-          {
-            "ClassName": "Spawner",
-            "ClassData": {
-              "SpawnClass": "BombEnemy",
-              "SpawnDelay": 2.0,
-              "InstanceData": {
-                "Texture": "cheems",
-                "Speed": 200.0
-              }
-            }
-          }
-        ]
-      }
+        {
+            "Name": "EnemySpawner",
+            "Transform": {
+                "Position": [ 200.0, 200.0 ],
+                "Scale": [ 0.05, 0.05 ]
+            },
+            "Components": [
+                {
+                    "ClassName": "Sprite",
+                    "ClassData": {
+                        "Texture": "cheems"
+                    }
+                },
+                {
+                    "ClassName": "Spawner",
+                    "ClassData": {
+                        "SpawnClass": "BombEnemy",
+                        "SpawnDelay": 2.0,
+                        "InstanceData": {
+                            "Texture": "cheems",
+                            "Speed": 200.0
+                        }
+                    }
+                }
+            ]
+        }
     ]
   }
 }

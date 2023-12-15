@@ -5,20 +5,47 @@
 
 IMPLEMENT_DYNAMIC_CLASS(Player)
 
+void LoadMainScene(STRCODE main_scene) {
+    Scene* active_scene = SceneManager::Get().GetActiveScene();
+    if (SceneManager::Get().SetActiveScene(main_scene)) {
+        active_scene->SetEnabled(false);
+    }
+}
+
+
 void Player::Initialize()
 {
     Component::Initialize();
     start_pos = ownerEntity->GetTransform().position;
     collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
+    auto search_hud_entity = ownerEntity->GetParentScene()->FindEntityByName("HUD");
+    if (search_hud_entity.size() > 0) {
+        hud = ((HUD*)search_hud_entity.front()->GetComponent("HUD"));
+    }
 }
 
 void Player::OnEnable() {
-    LOG("uwu");
+    lives = max_lives;
+    if (hud != nullptr) {
+        hud->lives = lives;
+        hud->game_countdown = 3 * 60;
+        hud->kill_count = 0;
+    }
+}
+
+void Player::OnDisable() {
+    if (hud != nullptr) {
+        hud->high_score = std::max(hud->kill_count, hud->high_score);
+    }
 }
 
 void Player::Update() {
     shoot_timer -= Time::Instance().DeltaTime();
     pause_timer -= Time::Instance().DeltaTimeUnscaled();
+
+    if (hud != nullptr && hud->game_countdown < 0) {
+        LoadMainScene(main_scene);
+    }
 
     Vec2 dir = Vec2::Zero;
     const InputSystem& input = InputSystem::Instance();
@@ -72,18 +99,18 @@ void Player::Update() {
         LOG("no collider uwu");
         return;
     }
-    for (const auto& other: collider->OnCollisionEnter())
+    for (const auto& other : collider->OnCollisionEnter())
     {
-	    if (other->GetOwner()->GetName() != "Enemy")
-	    {
+        if (other->GetOwner()->GetName() != "Enemy")
+        {
             continue;
         }
 
-    	Scene* current_scene = SceneManager::Get().GetActiveScene();
-    	if (SceneManager::Get().SetActiveScene(game_over_scene))
-    	{
-    		current_scene->SetEnabled(false);
-    	}
+        Scene* current_scene = SceneManager::Get().GetActiveScene();
+        if (SceneManager::Get().SetActiveScene(main_scene))
+        {
+            current_scene->SetEnabled(false);
+        }
 
         ownerEntity->GetTransform().position = start_pos;
     }
@@ -96,8 +123,21 @@ void Player::Load(json::JSON& node)
         speed = static_cast<float>(node.at("Speed").ToFloat());
     }
 
-    if (node.hasKey("DeathScene"))
+    if (node.hasKey("MainScene"))
     {
-	    game_over_scene = GetHashCode(node.at("DeathScene").ToString().c_str());
+        main_scene = GetHashCode(node.at("MainScene").ToString().c_str());
+    }
+}
+
+void Player::TakeDamage()
+{
+    lives--;
+    LOG(lives);
+    if (lives < 0) {
+        LoadMainScene(main_scene);
+        return;
+    }
+    if (hud != nullptr) {
+        hud->lives = lives;
     }
 }

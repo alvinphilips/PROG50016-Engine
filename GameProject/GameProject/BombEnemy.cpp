@@ -11,6 +11,8 @@ void BombEnemy::Initialize()
 void BombEnemy::Update()
 {
 	auto dir = player->GetOwner()->GetTransform().position - ownerEntity->GetTransform().position;
+
+	// Let's not get TOO close to the player, either :P
 	if (dir.MagnitudeSquared() > min_padding_from_player_squared) {
 		dir.Normalize();
 		ownerEntity->GetTransform().position += dir * speed * Time::Instance().DeltaTime();
