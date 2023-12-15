@@ -16,6 +16,8 @@ void Spawner::Initialize()
 
 void Spawner::Update()
 {
+	Component::Update();
+
 	spawn_timer -= Time::Instance().DeltaTime();
 
 	if (spawn_timer > 0) {
@@ -39,7 +41,8 @@ void Spawner::Update()
 
 	// Create and position enemy
 	Entity* entity = scene->CreateEntity();
-	entity->CreateComponent(spawn_class);
+	Component* component = entity->CreateComponent(spawn_class);
+	component->Load(instance_data);
 	entity->GetTransform().position = ownerEntity->GetTransform().position;
 
 	spawn_timer = spawn_delay;
@@ -64,6 +67,10 @@ void Spawner::Load(json::JSON& node)
 	if (node.hasKey("DropItem")) {
 		dropped_item_class = node.at("DropItem").ToString();
 		drop_item_when_destroyed = true;
+	}
+
+	if (node.hasKey("InstanceData")) {
+		instance_data = node["InstanceData"];
 	}
 }
 

@@ -9,7 +9,7 @@ void MainMenu::Initialize()
 	SetCallback(0, [this] {
 		Scene* current_scene = SceneManager::Get().GetActiveScene();
 		if (SceneManager::Get().SetActiveScene(start_scene)) {
-			current_scene->isEnabled = false;
+			current_scene->SetEnabled(false);
 		}
 		else {
 			LOG("Could not change scene");

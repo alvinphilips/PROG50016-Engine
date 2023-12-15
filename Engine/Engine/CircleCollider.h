@@ -20,6 +20,7 @@ class CircleCollider : public ICollider
 private:
 	float m_radius = 0;
 public:
+	void Initialize() override;
 	/**
  * @brief CircleCollider Constructor. Gets transform but not radius
  */
@@ -39,7 +40,7 @@ public:
  *
  * @return returns the float radius of the collider
  */
-	float GetRadius() const;
+	float GetRadius();
 	float GetBroadPhaseRadius() const override;
 
 	/**

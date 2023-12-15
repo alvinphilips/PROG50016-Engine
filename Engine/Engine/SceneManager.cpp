@@ -64,7 +64,7 @@ void SceneManager::Load()
 				{
 					activeScene = scene;
 					// active scene has to be enabled, or else it won't update and render
-					activeScene->isEnabled = true;
+					activeScene->SetEnabled(true);
 				}
 			}
 		}
@@ -98,7 +98,7 @@ void SceneManager::PreUpdate()
 	{
 		activeScene = toBeSetAsActive;
 		// Active scene must be enabled
-		activeScene->isEnabled = true;
+		activeScene->SetEnabled(true);
 		toBeSetAsActive = nullptr;
 	}
 }
@@ -110,12 +110,12 @@ void SceneManager::Update()
 {
 	for (Scene* scene : loadedScenes)
 	{
-		if (scene->isEnabled)
+		scene->PreUpdate();
+		if (scene->is_enabled)
 		{
-			scene->PreUpdate();
 			scene->Update();
-			scene->PostUpdate();
 		}
+		scene->PostUpdate();
 	}
 }
 

@@ -44,6 +44,11 @@ void Scene::Initialize()
 	{
 		entity->Initialize();
 	}
+
+	if (is_enabled) {
+		is_enabled = false;
+		SetEnabled(true);
+	}
 }
 
 /**
@@ -84,7 +89,7 @@ void Scene::Load(json::JSON& sceneJSON)
 	}
 	if (sceneData.hasKey("IsEnabled"))
 	{
-		isEnabled = sceneData["IsEnabled"].ToBool();
+		is_enabled = sceneData["IsEnabled"].ToBool();
 	}
 
 	// Load the entities
@@ -271,6 +276,31 @@ bool Scene::RemoveEntity(STRCODE entityId)
 		}
 	}
 	return false;
+}
+
+void Scene::SetEnabled(bool enabled)
+{
+	if (is_enabled == enabled) {
+		return;
+	}
+
+	is_enabled = enabled;
+
+	if (enabled) {
+		for (const auto& entity : entities) {
+			entity->OnEnable();
+		}
+	}
+	else {
+		for (const auto& entity : entities) {
+			entity->OnDisable();
+		}
+	}
+}
+
+bool Scene::IsEnabled() const
+{
+	return is_enabled;
 }
 
 // ------------------------- Getters -------------------------

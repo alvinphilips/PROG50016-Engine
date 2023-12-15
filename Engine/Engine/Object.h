@@ -59,6 +59,9 @@ protected:
      */
     virtual void Destroy() {}
 
+    virtual void OnEnable() {}
+    virtual void OnDisable() {}
+
 public:
 
     /**

@@ -18,6 +18,8 @@ class PauseMenu final : public Menu
 public:
     void Initialize() override;
     void Load(json::JSON&) override;
+    void OnEnable() override;
+    void OnDisable() override;
 private:
     STRCODE main_scene = -1;
 };

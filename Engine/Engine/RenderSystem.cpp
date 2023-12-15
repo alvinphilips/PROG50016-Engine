@@ -97,7 +97,7 @@ void RenderSystem::Update()
 
 	for (Renderable* renderable : _renderables)
 	{
-		if (!renderable->ownerEntity->GetParentScene()->isEnabled)
+		if (!renderable->ownerEntity->GetParentScene()->IsEnabled())
 		{
 			continue;
 		}

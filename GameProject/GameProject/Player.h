@@ -10,10 +10,17 @@ class Player : public Component
 
 public:
     void Initialize() override;
+    void OnEnable() override;
     void Update() override;
     void Load(json::JSON&) override;
 private:
     float speed = 5.0f;
+    int max_lives = 3;
+    int lives;
+    float shoot_delay = 0.2f;
+    float shoot_timer;
+    float pause_delay = 0.2f;
+    float pause_timer;
     Vec2 start_pos;
     BoxCollider* collider = nullptr;
     STRCODE game_over_scene = -1;
