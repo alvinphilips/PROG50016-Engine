@@ -21,6 +21,8 @@ private:
 	std::string guid = "";
 	STRCODE uid = 0;
 	std::string name = "";
+	// Only enabled scenes get updated & rendered
+	bool is_enabled = true;
 
 	std::list<Entity*> entitiesToBeAdded;
 	std::list<Entity*> entities;
@@ -41,8 +43,6 @@ protected:
 	void Destroy();
 
 public:
-	// Only enabled scenes get updated & rendered
-	bool isEnabled = true;
 
 	Scene();
 	Scene(std::string guid);
@@ -55,6 +55,8 @@ public:
 	std::list<Entity*> FindEntityWithComponent(std::string componentClassName);
 	bool RemoveEntity(std::string entityGuid);
 	bool RemoveEntity(STRCODE entityId);
+	void SetEnabled(bool);
+	bool IsEnabled() const;
 
 	// Getters
 	std::string& GetGUID();

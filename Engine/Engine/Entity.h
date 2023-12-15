@@ -84,6 +84,9 @@ protected:
      */
     void Destroy() override;
 
+    void OnEnable() override;
+    void OnDisable() override;
+
 public:
     /**
      * @brief Check if the Entity has a Component with the given name

@@ -82,6 +82,24 @@ void Entity::Destroy()
 	components.clear();
 }
 
+void Entity::OnEnable()
+{
+	for (const auto component: components) {
+		if (!component->IsActive()) {
+			return;
+		}
+		component->OnEnable();
+	}
+}
+
+void Entity::OnDisable()
+{
+	for (const auto component : components) {
+		component->OnDisable();
+	}
+}
+
+
 bool Entity::HasComponent(const std::string& componentName) const
 {
 	for (const auto component : components)

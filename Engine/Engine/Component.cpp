@@ -19,6 +19,9 @@ IMPLEMENT_ABSTRACT_CLASS(Component)
  */
 void Component::Initialize()
 {
+    if (isActive) {
+        OnEnable();
+    }
 }
 
 
