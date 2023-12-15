@@ -16,6 +16,8 @@ void Spawner::Initialize()
 
 void Spawner::Update()
 {
+	Component::Update();
+
 	spawn_timer -= Time::Instance().DeltaTime();
 
 	if (spawn_timer > 0) {

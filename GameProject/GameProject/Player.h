@@ -18,7 +18,7 @@ private:
     int lives;
     float shoot_delay = 0.2f;
     float shoot_timer;
-    float pause_delay = 0.5f;
+    float pause_delay = 0.2f;
     float pause_timer;
     Vec2 start_pos;
     BoxCollider* collider = nullptr;
