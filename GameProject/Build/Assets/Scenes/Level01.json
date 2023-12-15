@@ -2,10 +2,13 @@
   "AssetManager": {
     "Assets": [
       {
-        "GUID": "https-youtu-be-jVhlJNJopOQ"
+        "GUID": "girl"
       },
       {
         "GUID": "meow"
+      },
+      {
+        "GUID": "https-youtu-be-jVhlJNJopOQ"
       }
     ]
   },
@@ -22,46 +25,36 @@
         },
         "Components": [
           {
+            "ClassName": "AnimatedSprite",
+            "ClassData": {
+              "Texture": "girl",
+              "SpriteSheet": {
+                "Rows": 1,
+                "Columns": 20,
+                "Frames": 20
+              }
+            }
+          },
+          {
             "ClassName": "BoxCollider"
           },
           {
             "ClassName": "Player",
             "ClassData": {
-
+              "Speed": 400.0
             }
           }
         ]
       },
       {
-        "Name": "GameOver",
-        "GUID": "uwu",
+        "Name": "Player",
         "Transform": {
-          "Position": [
-            320.0,
-            320.0
-          ],
-          "Rotation": 0.0,
-          "Scale": [
-            0.2,
-            0.2
-          ]
+          "Position": [ 200.0, 200.0 ],
+          "Scale": [ 0.5, 0.5 ]
         },
         "Components": [
           {
-            "ClassName": "GameOver",
-            "ClassData": {
-              "SoundTimer": 5.0,
-              "Sound": "meow",
-              "SceneToLoad": "1a9e5171-c7ab-47d4-9af4-d490d1494201",
-              "SceneLoadDelay": 15.0
-            }
-          },
-          {
-            "ClassName": "FontSprite",
-            "ClassData": {
-              "Text": "Game Over",
-              "Font": "https-youtu-be-jVhlJNJopOQ"
-            }
+            "ClassName": "HUD"
           }
         ]
       }
