@@ -12,7 +12,6 @@ public:
     void Initialize() override;
     void Update() override;
     void Load(json::JSON&) override;
-    void Destroy() override;
     void OnDisable() override;
 protected:
     Vec2 previous_position;

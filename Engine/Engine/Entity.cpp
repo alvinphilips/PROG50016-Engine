@@ -65,6 +65,9 @@ void Entity::PreUpdate()
 
 void Entity::PostUpdate()
 {
+	for (auto component : componentsToRemove) {
+		component->OnDisable();
+	}
 	for (auto component : componentsToRemove)
 	{
 		components.remove(component);
@@ -76,6 +79,9 @@ void Entity::PostUpdate()
 
 void Entity::Destroy()
 {
+	for (auto component : components) {
+		component->OnDisable();
+	}
 	for (const auto component : components)
 	{
 		component->Destroy();
