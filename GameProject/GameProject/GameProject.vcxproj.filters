@@ -16,17 +16,20 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="PauseMenu.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="MouseCursor.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="Spawner.cpp">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,17 +42,20 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files\Core</Filter>
+    <ClInclude Include="Spawner.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="MainMenu.h">
-      <Filter>Header Files\Game</Filter>
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="MouseCursor.h">
       <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Spawner.h">
-      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,11 +92,11 @@
     <None Include="..\Build\Assets\Oswald.ttf.asset">
       <Filter>Assets\Fonts</Filter>
     </None>
-    <None Include="PauseMenu.h">
-      <Filter>Header Files\Game</Filter>
-    </None>
     <None Include="..\Build\Assets\Scenes\PauseMenu.json">
       <Filter>Scenes</Filter>
+    </None>
+    <None Include="PauseMenu.h">
+      <Filter>Header Files\UI</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +135,12 @@
     </Filter>
     <Filter Include="Assets\Fonts">
       <UniqueIdentifier>{95613a3e-a2ef-4150-8e1d-634ee5a5fe9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{94509a94-28ff-4429-9db5-a18cdb0444e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{e674b8cb-9c72-451d-9734-294db0f16969}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

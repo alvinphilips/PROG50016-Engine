@@ -18,7 +18,9 @@
 #include "MouseCursor.h"
 #include "Spawner.h"
 #include "GameOver.h"
+#include "Sprite.h"
 #include "AudioSystem.h"
 #include "AssetManager.h"
+#include "HUD.h"
 
 #endif // !_GAME_CORE_H_

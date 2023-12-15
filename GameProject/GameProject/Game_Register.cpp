@@ -9,4 +9,5 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(PauseMenu);
 	REGISTER_TYPECLASS(Cursor);
 	REGISTER_TYPECLASS(Spawner);
+	REGISTER_TYPECLASS(HUD);
 }

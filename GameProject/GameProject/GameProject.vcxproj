@@ -185,6 +185,7 @@
   <ItemGroup>
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Game_Register.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="Spawner.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="MainMenu.h" />
