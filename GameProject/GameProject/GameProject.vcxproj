@@ -185,9 +185,12 @@
   <ItemGroup>
     <ClCompile Include="BombEnemy.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="ExtraLifeItem.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Game_Register.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="FireRateItem.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -195,18 +198,23 @@
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Spawner.cpp" />
+    <ClCompile Include="SpeedBoostItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BombEnemy.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="ExtraLifeItem.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MouseCursor.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Spawner.h" />
+    <ClInclude Include="SpeedBoostItem.h" />
+    <ClInclude Include="FireRateItem.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Build\Assets\girl.png" />

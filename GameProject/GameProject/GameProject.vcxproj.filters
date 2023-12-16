@@ -37,6 +37,18 @@
     <ClCompile Include="BombEnemy.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="SpeedBoostItem.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="FireRateItem.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtraLifeItem.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h">
@@ -68,6 +80,18 @@
     </ClInclude>
     <ClInclude Include="BombEnemy.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="SpeedBoostItem.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="FireRateItem.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtraLifeItem.h">
+      <Filter>Header Files\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +177,12 @@
     </Filter>
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{e674b8cb-9c72-451d-9734-294db0f16969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Items">
+      <UniqueIdentifier>{e3fe4a31-467c-4c9d-afc7-8c2d608e73b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{f503e733-9210-4db1-8cdb-3da44ffba3c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

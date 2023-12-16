@@ -24,5 +24,9 @@
 #include "MouseCursor.h"
 #include "Spawner.h"
 #include "GameOver.h"
+#include "Item.h"
+#include "SpeedBoostItem.h"
+#include "FireRateItem.h"
+#include "ExtraLifeItem.h"
 
 #endif // !_GAME_CORE_H_

@@ -52,7 +52,7 @@ void HUD::Initialize()
 		Entity* entity = ownerEntity->GetParentScene()->CreateEntity();
 		entity->GetTransform().scale = Vec2(0.1f);
 		Sprite* heart = (Sprite*)entity->CreateComponent("Sprite");
-		heart->SetTextureAsset((TextureAsset*)AssetManager::Get().GetAsset("cheems"));
+		heart->SetTextureAsset(player_heart_texture);
 		sprite_lives.push_back(heart);
 	}
 	text_kill_count = CreateTextField(font);
@@ -85,6 +85,10 @@ void HUD::Load(json::JSON& node)
 	}
 	if (node.hasKey("Offset")) {
 		ui_offset = vec2_from_json(node.at("Offset"));
+	}
+	if (node.hasKey("PlayerHeartTexture"))
+	{
+		player_heart_texture = (TextureAsset*)AssetManager::Get().GetAsset(node.at("PlayerHeartTexture").ToString());
 	}
 }
 

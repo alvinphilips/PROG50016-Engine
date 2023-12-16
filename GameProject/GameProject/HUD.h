@@ -35,7 +35,7 @@ protected:
     FontSprite* CreateTextField(FontAsset*);
     Vec2 SetTextField(FontSprite* text_field, const std::string& text, Vec2 offset = Vec2::Zero);
     Vec2 SetPlayerLives(Vec2 offset = Vec2::Zero);
-
+    TextureAsset* player_heart_texture = nullptr;
     std::string text_font = "oswald-font";
     Vec2 ui_offset = { 10, 10 };
 };
