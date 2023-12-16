@@ -10,7 +10,6 @@ class Player : public Component
 {
     DECLARE_DYNAMIC_DERIVED_CLASS(Player, Component)
 
-public:
     void Initialize() override;
     void OnEnable() override;
     void OnDisable() override;

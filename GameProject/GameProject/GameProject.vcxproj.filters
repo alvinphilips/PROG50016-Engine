@@ -31,12 +31,6 @@
     <ClCompile Include="HUD.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="BombEnemy.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="SpeedBoostItem.cpp">
       <Filter>Source Files\Items</Filter>
     </ClCompile>
@@ -48,6 +42,18 @@
     </ClCompile>
     <ClCompile Include="ExtraLifeItem.cpp">
       <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="BombEnemy.cpp">
+      <Filter>Source Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileSystem.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +98,12 @@
     </ClInclude>
     <ClInclude Include="ExtraLifeItem.h">
       <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileSystem.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +195,9 @@
     </Filter>
     <Filter Include="Header Files\Items">
       <UniqueIdentifier>{f503e733-9210-4db1-8cdb-3da44ffba3c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Enemies">
+      <UniqueIdentifier>{d6e50d88-f9af-4686-a0dd-a29ea151d710}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

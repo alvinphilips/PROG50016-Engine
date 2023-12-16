@@ -20,14 +20,14 @@ class Entity final : public Object
     DECLARE_DYNAMIC_DERIVED_CLASS(Entity, Object)
 
 private:
-    Scene* ownerScene = nullptr;
     Transform transform;
 
     std::list<Component*> components;
     std::list<Component*> componentsToAdd;
     std::list<Component*> componentsToRemove;
 
-protected:
+public:
+    Scene* ownerScene = nullptr;
     /**
      * @brief Default constructor for the Entity class.
      * This constructor is protected to prevent direct instantiation of the Entity class. 

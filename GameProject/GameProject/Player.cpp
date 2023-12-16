@@ -1,6 +1,8 @@
 #include "GameCore.h"
 #include "Player.h"
 
+#include "ProjectileSystem.h"
+
 #define NDEBUG_PLAYER
 
 IMPLEMENT_DYNAMIC_CLASS(Player)
@@ -31,12 +33,15 @@ void Player::OnEnable() {
 		hud->game_countdown = 3 * 60;
 		hud->kill_count = 0;
 	}
+	ProjectileSystem::Get().SetParentScene(ownerEntity->GetParentScene());
+	ProjectileSystem::Get().Initialize();
 }
 
 void Player::OnDisable() {
 	if (hud != nullptr) {
 		hud->high_score = std::max(hud->kill_count, hud->high_score);
 	}
+	ownerEntity->GetTransform().position = start_pos;
 }
 
 void Player::Update() {
@@ -84,7 +89,10 @@ void Player::Update() {
 	ownerEntity->GetTransform().position += dir * (speed * speed_multiplier * Time::Instance().DeltaTime());
 
 	if (input.isMouseButtonPressed(SDL_BUTTON_LEFT) && shoot_timer < 0) {
-		Scene* scene = ownerEntity->GetParentScene();
+		Vec2 pos = ownerEntity->GetTransform().position;
+		Vec2 dir = Vec2(input.MousePosition()) - pos;
+		dir.Normalize();
+		ProjectileSystem::Get().AddProjectile(ownerEntity->GetTransform().position, dir * 100.0f);
 		shoot_timer = shoot_delay;
 	}
 
@@ -121,6 +129,7 @@ void Player::Update() {
 
 		ownerEntity->GetTransform().position = start_pos;
 	}
+	ProjectileSystem::Get().Update();
 }
 void Player::Load(json::JSON& node)
 {
@@ -139,7 +148,6 @@ void Player::Load(json::JSON& node)
 void Player::TakeDamage()
 {
 	lives--;
-	LOG(lives);
 	if (lives < 0) {
 		LoadMainScene(main_scene);
 		return;

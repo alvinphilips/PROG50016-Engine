@@ -16,4 +16,5 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(SpeedBoostItem);
 	REGISTER_TYPECLASS(FireRateItem);
 	REGISTER_TYPECLASS(ExtraLifeItem);
+	REGISTER_TYPECLASS(Projectile);
 }

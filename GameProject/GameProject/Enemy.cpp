@@ -6,6 +6,9 @@ IMPLEMENT_DYNAMIC_CLASS(Enemy)
 void Enemy::Initialize()
 {
 	Component::Initialize();
+
+	ownerEntity->GetTransform().scale = Vec2(scale_sprite);
+
 	auto sprite = (Sprite*)ownerEntity->CreateComponent("Sprite");
 	sprite->SetTextureAsset(texture);
 	collider = (CircleCollider*)ownerEntity->CreateComponent("CircleCollider");
@@ -67,9 +70,9 @@ void Enemy::Load(json::JSON& node)
 	if (node.hasKey("Speed")) {
 		speed = (float)node.at("Speed").ToFloat();
 	}
-}
 
-void Enemy::OnDisable()
-{
-	// ownerEntity->GetParentScene()->RemoveEntity(ownerEntity->GetUid());
+	if (node.hasKey("SpriteScale"))
+	{
+		scale_sprite = (float)node.at("SpriteScale").ToFloat();
+	}
 }

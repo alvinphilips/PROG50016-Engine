@@ -12,9 +12,9 @@
 class Object
 {
     DECLARE_ABSTRACT_BASE_CLASS(Object)
-
-protected:
+    
     bool isActive = true;
+protected:
 
     std::string name;
     std::string guid;

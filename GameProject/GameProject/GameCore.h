@@ -28,5 +28,6 @@
 #include "SpeedBoostItem.h"
 #include "FireRateItem.h"
 #include "ExtraLifeItem.h"
+#include "Projectile.h"
 
 #endif // !_GAME_CORE_H_

@@ -197,6 +197,8 @@
     <ClCompile Include="MouseCursor.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="ProjectileSystem.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="SpeedBoostItem.cpp" />
   </ItemGroup>
@@ -212,6 +214,8 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MouseCursor.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="ProjectileSystem.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="SpeedBoostItem.h" />
     <ClInclude Include="FireRateItem.h" />
