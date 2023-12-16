@@ -8,6 +8,7 @@ void Projectile::Initialize()
 	texture = (TextureAsset*) AssetManager::Get().GetAsset("cheems");
 	Component::Initialize();
 	Sprite* sprite = (Sprite*)ownerEntity->CreateComponent("Sprite");
+	collider = (CircleCollider*)ownerEntity->CreateComponent("CircleCollider");
 	sprite->SetTextureAsset(texture);
 }
 
@@ -17,12 +18,25 @@ void Projectile::Update()
 
 	lifetime -= Time::Instance().DeltaTime();
 
-	if (lifetime < 0)
+	ownerEntity->GetTransform().position += velocity * Time::Instance().DeltaTime();
+
+	bool is_dead = lifetime < 0;
+
+	for (const auto other: collider->OnCollisionEnter())
 	{
-		ownerEntity->isActive = false;
+		std::string& other_name = other->GetOwner()->GetName();
+		if (other_name == "Projectile")
+		{
+			continue;
+		}
+		is_dead = is_dead || ((other_name == "Player") != player_projectile);
+		break;
 	}
 
-	ownerEntity->GetTransform().position += velocity * Time::Instance().DeltaTime();
+	if (is_dead)
+	{
+		ownerEntity->GetParentScene()->RemoveEntity(ownerEntity->GetUid());
+	}
 }
 
 void Projectile::SetLifetime(const float lifetime)

@@ -1,8 +1,6 @@
 #include "GameCore.h"
 #include "Player.h"
 
-#include "ProjectileSystem.h"
-
 #define NDEBUG_PLAYER
 
 IMPLEMENT_DYNAMIC_CLASS(Player)
@@ -33,8 +31,6 @@ void Player::OnEnable() {
 		hud->game_countdown = 3 * 60;
 		hud->kill_count = 0;
 	}
-	ProjectileSystem::Get().SetParentScene(ownerEntity->GetParentScene());
-	ProjectileSystem::Get().Initialize();
 }
 
 void Player::OnDisable() {
@@ -92,7 +88,12 @@ void Player::Update() {
 		Vec2 pos = ownerEntity->GetTransform().position;
 		Vec2 dir = Vec2(input.MousePosition()) - pos;
 		dir.Normalize();
-		ProjectileSystem::Get().AddProjectile(ownerEntity->GetTransform().position, dir * 100.0f);
+
+		Entity* bullet_entity = ownerEntity->GetParentScene()->CreateEntity();
+		Projectile* bullet = (Projectile*)bullet_entity->CreateComponent("Projectile");
+		bullet_entity->GetTransform().position = ownerEntity->GetTransform().position + dir;
+		bullet->SetVelocity(dir * 100);
+
 		shoot_timer = shoot_delay;
 	}
 
@@ -126,10 +127,7 @@ void Player::Update() {
 		{
 			current_scene->SetEnabled(false);
 		}
-
-		ownerEntity->GetTransform().position = start_pos;
 	}
-	ProjectileSystem::Get().Update();
 }
 void Player::Load(json::JSON& node)
 {
